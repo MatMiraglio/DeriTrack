@@ -30,6 +30,12 @@ namespace DeriTrack.Domain
             return email._value;
         }
 
+        //TODO: replace workaround with JsonConverter
+        public override string ToString()
+        {
+            return _value;
+        }
+
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return _value;

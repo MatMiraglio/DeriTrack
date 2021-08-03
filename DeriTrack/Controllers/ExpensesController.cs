@@ -26,6 +26,25 @@ namespace DeriTrack.Controllers
         [HttpGet]
         //[Authorize(Roles = "Administrator")]
         [AllowAnonymous]
+        [Route("all-expenses")]
+        public IActionResult Get()
+        {
+            var expenses = _context.Expenses.Select(x => new
+            {
+                x.Id,
+                RecipientEmail = x.Recipient.Email.ToString(),
+                Amount = x.AmountInCents,
+                Currency = x.Currency.Code,
+                Date = (string) x.Date,
+                x.Category
+            }).ToList();
+
+            return Ok(expenses);
+        }
+
+        [HttpGet]
+        //[Authorize(Roles = "Administrator")]
+        [AllowAnonymous]
         [Route("search-expenses")]
         public IActionResult Get(int page, int pageSize, long? userId)
         {

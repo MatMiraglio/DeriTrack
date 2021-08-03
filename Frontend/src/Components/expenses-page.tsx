@@ -4,17 +4,18 @@ import React from 'react';
 import PageWrapper from './page-wrapper';
 import { Link as RouterLink } from 'react-router-dom'
 import ExpenseCreatePage from './create-expense-page';
+import { useFetchGet } from '../Hooks/fetch';
 
 
     interface Column {
-        id: 'user' | 'currency' | 'amount' | 'category' | 'date';
+        id: 'recipientEmail' | 'currency' | 'amount' | 'category' | 'date';
         label: string;
         minWidth?: number;
         format?: (value: any) => string;
     }
   
     const columns: Column[] = [
-        { id: 'user', label: 'User'},
+        { id: 'recipientEmail', label: 'User'},
         {
         id: 'currency',
         label: 'Currency',
@@ -35,20 +36,20 @@ import ExpenseCreatePage from './create-expense-page';
         { 
             id: 'date', 
             label: 'Date',
-            format: (value: Date) => value.toDateString(),
+            //format: (value: Date) => value.toDateString(),
         },
     ];
   
   interface Data {
-    user: string;
+    recipientEmail: string;
     currency: string;
     amount: number;
     category: string;
     date: Date;
   }
   
-  function createData(user: string, currency: string, amount: number, category : string, date: Date): Data {
-    return { user, currency, amount, category, date };
+  function createData(recipientEmail: string, currency: string, amount: number, category : string, date: Date): Data {
+    return { recipientEmail, currency, amount, category, date };
   }
   
   const rows = [
@@ -83,6 +84,8 @@ function ExpensesPage() {
     const classes = useStyles();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+    const { data: expenses, status } = useFetchGet<Data[]>('https://localhost:44335/all-expenses')
 
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
@@ -129,7 +132,7 @@ function ExpensesPage() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+              {expenses?.map((row) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.currency}>
                     {columns.map((column) => {
@@ -146,7 +149,7 @@ function ExpensesPage() {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
+        {/* <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
           count={rows.length}
@@ -154,7 +157,7 @@ function ExpensesPage() {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+        /> */}
       </Paper>
     </PageWrapper>
   );
