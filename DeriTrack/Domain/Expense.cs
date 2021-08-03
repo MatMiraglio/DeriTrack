@@ -26,7 +26,7 @@ namespace DeriTrack.Domain
 
         public long Id { get; private set; }
         public virtual User Recipient { get; private set; }
-        public Date Date { get; set; }
+        public Date Date { get; private set; }
         public DateTimeOffset CreatedAt { get; private set; }
         public int AmountInCents { get; private set; }
         public Currency Currency { get; private set; }

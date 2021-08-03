@@ -82,7 +82,9 @@ namespace DeriTrack.Controllers
             [Required]
             public string Category { get; set; }
 
+
             [Required]
+            //TODO: use Date instead of string
             public string Date { get; set; }
         }
         

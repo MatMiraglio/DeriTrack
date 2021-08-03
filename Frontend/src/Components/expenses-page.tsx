@@ -85,7 +85,7 @@ function ExpensesPage() {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-    const { data: expenses, status } = useFetchGet<Data[]>('https://localhost:44335/all-expenses')
+    const { data: expenses } = useFetchGet<Data[]>('https://localhost:44335/all-expenses')
 
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
