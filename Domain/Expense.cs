@@ -9,7 +9,7 @@ namespace Domain
 
         public static Result<Expense> Create(User recipient, int amountInCents, Currency currency, Date date, string category)
         {
-            if (amountInCents < 0) return Errors.General.InvalidData("Expense amount must be positive");
+            if (amountInCents <= 0) return Errors.General.InvalidData("Expense amount must be positive");
 
             //This check is a bit unrealistic. just to illustrate how we check here all business rules during the creation of a new Expense.
             if (!recipient.IsActive) return Errors.Expenses.UserNotActive();
