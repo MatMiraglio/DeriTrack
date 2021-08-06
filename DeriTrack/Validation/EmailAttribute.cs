@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using DeriTrack.Domain;
+using Domain;
 
 namespace DeriTrack.Validation
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DeriTrack.Domain.Result
+namespace Domain.Result
 {
     public sealed class Error : ValueObject
     {

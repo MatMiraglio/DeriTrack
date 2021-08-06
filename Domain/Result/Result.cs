@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DeriTrack.Domain.Result
+namespace Domain.Result
 {
     public class Result
     {

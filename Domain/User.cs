@@ -1,5 +1,5 @@
 
-namespace DeriTrack.Domain
+namespace Domain
 {
     public class User
     {

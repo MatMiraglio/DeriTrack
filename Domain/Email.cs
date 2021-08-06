@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using DeriTrack.Domain.Result;
+using Domain.Result;
 
-namespace DeriTrack.Domain
+namespace Domain
 {
     public class Email : ValueObject
     {

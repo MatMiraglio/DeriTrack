@@ -1,7 +1,7 @@
 using System;
-using DeriTrack.Domain.Result;
+using Domain.Result;
 
-namespace DeriTrack.Domain
+namespace Domain
 {
     public class Expense
     {

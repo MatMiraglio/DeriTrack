@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using DeriTrack.Domain.Result;
+using Domain.Result;
 
-namespace DeriTrack.Domain
+namespace Domain
 {
     public class Currency
     {

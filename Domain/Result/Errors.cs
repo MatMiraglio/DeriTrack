@@ -1,4 +1,4 @@
-﻿namespace DeriTrack.Domain.Result
+﻿namespace Domain.Result
 {
     public static class Errors
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-using DeriTrack.Domain.Result;
+using Domain.Result;
 using FluentAssertions;
 using NUnit.Framework;
 

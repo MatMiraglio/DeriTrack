@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using DeriTrack.Domain;
 using DeriTrack.Validation;
+using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -32,10 +32,11 @@ namespace DeriTrack.Controllers
             var expenses = _context.Expenses.Select(x => new
             {
                 x.Id,
-                RecipientEmail = x.Recipient.Email.ToString(),
+                //TODO: change casting with custom json serializers for types.
+                RecipientEmail = (string) x.Recipient.Email,
+                Date = (string) x.Date,
                 Amount = x.AmountInCents,
                 Currency = x.Currency.Code,
-                Date = (string) x.Date,
                 x.Category
             }).ToList();
 
